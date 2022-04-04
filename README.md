@@ -44,3 +44,39 @@ docker build -t myimage .</br>
 docker ps -a</br>
 docker images</br>
 docker run -it --name myconatiner myimage bin/bash/</br>
+
+
+-------------------------------------------------------</br>
+Volume is simply directory</br>
+Firstly declare directory as volume thn share volume</br>
+Even if container stop still we can access volume</br>
+Volume can't create on existing container</br>
+Volume can be sahred with any number of container</br>
+Voolume will not be included when we update the image(running container)</br>
+
+
+
+Docker filr 
+FROM unbuntu
+VOLUME ["/myvolume"]
+
+
+docker build -t myimage . ( create image)
+docker run -it --name mycontainer myimage /bin/bash (it - create and run docker conatiner)</br>
+
+
+Share  volume with other volume :-
+container 1 <------------------------------> conatiner 2
+
+docker run -it --name conatiner2 --previleged=true --volume-from conatiner1 ubuntu /bin/bash 
+
+
+
+
+
+
+
+
+
+
+
