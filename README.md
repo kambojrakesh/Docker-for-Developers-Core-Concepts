@@ -1,6 +1,6 @@
 # Docker-for-Developers-Core-Concepts</br>
 https://www.linkedin.com/learning/docker-for-data-scientists/why-docker</br>
-
+https://hackr.io/blog/docker-cheat-sheet-docker-commands
 
 yum install docker -y(Install DOcker over AWS)</br>
 
@@ -70,7 +70,47 @@ container 1 <------------------------------> conatiner 2
 
 docker run -it --name conatiner2 --previleged=true --volume-from conatiner1 ubuntu /bin/bash 
 
+----------------------------------
 
+
+If you want to see the difference between the base image & changes on it then
+# docker diff <ContainerName>
+Output :
+C /root
+A /root/.bash_history
+C /tmp
+A /tmp/myfile
+C means Changes, A means Addition, D means Deletion
+
+Now, create image of this Container by using commit cammand
+# docker commit <ContainerName> <ImageName>
+
+Now, create image of this Container by using Dockerfile
+
+What is Dockerfile ?
+Dockerfile is basically a test file. It contains some sets of instructions.
+Dockerfile is used to automate the creation of images.
+
+Docker Components
+FROM --> for base image. This Command must be on top of Dockerfile
+
+RUN --> To execute Cammands,it will create a layer in image
+
+MAINTAINER --> Auther/Owner/Description
+
+COPY --> copy files from local system. we need to provide source destination.
+
+ADD --> Similar to COPY but, it provides a feature to download files from interent, also we exract file at docker image side.
+
+EXPOSE --> To expose ports such as port 8080 for tomcat.
+
+WORKDIR --> To set working directory for a container.
+
+CMD --> Execute Commands but during Container Creation.
+
+ENTRYPOINT --> Similar to CMD, but has higher priority over CMD, first Commands will executed by ENTRYPOINT only.
+
+ENV --> Environment Vairiables
 
 
 
